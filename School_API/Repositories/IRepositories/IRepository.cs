@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq.Expressions;
 
-namespace School_API.Repository.IRepository
+namespace School_API.Repositories.IRepositories
 {
     public interface IRepository<T> where T : class
     {
