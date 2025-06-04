@@ -95,6 +95,13 @@ namespace School_API.Controllers
             {
                 _logger.LogInformation($"Creando un nuevo estudiante con nombre: {createDto.Name}");
 
+                if (string.IsNullOrWhiteSpace(createDto.Name))
+                {
+                    _logger.LogError("El nombre del estudiante no puede estar vacío.");
+                    ModelState.AddModelError("NombreRequerido", "¡El nombre del estudiante es obligatorio!");
+                    return BadRequest(ModelState);
+                }
+
                 // Verificar si el estudiante ya existe
                 var existingStudent = await _studentRepo.GetAsync(s => s.Name != null && s.Name.ToLower()
                     == createDto.Name.ToLower());
