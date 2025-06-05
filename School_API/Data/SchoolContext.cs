@@ -13,5 +13,6 @@ namespace School_API.Data
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
