@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using School_API.Dto;
+using School_API.Filters;
 using School_API.Repositories.IRepositories;
 using SharedModels;
 
@@ -23,6 +24,23 @@ namespace School_API.Controllers
             _mapper = mapper;
         }
 
+        [BlockStudentsFilter]
+        [HttpGet("forbidden-test")]
+        public IActionResult ForbiddenTest()
+        {
+            return Ok("Acceso autorizado.");
+        }
+
+        [TimingFilter]
+        [HttpGet("timed")]
+        public async Task<IActionResult> GetWithTiming()
+        {
+            await Task.Delay(300); // simula procesamiento
+            return Ok("Petición medida con filtro de recurso.");
+        }
+
+        [MyLogging("GetStudents")]
+        [MyLoggingAsync("GetStudents")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -44,6 +62,7 @@ namespace School_API.Controllers
             }
         }
 
+        [AppendInfoFilter]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -79,6 +98,13 @@ namespace School_API.Controllers
             }
         }
 
+        [GlobalExceptionFilter]
+        [HttpGet("fail")]
+        public IActionResult ThrowError()
+        {
+            throw new Exception("Esto es un error simulado.");
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -103,9 +129,9 @@ namespace School_API.Controllers
                 }
 
                 // Verificar si el estudiante ya existe
-                var existingStudent = await _studentRepo
-                    .GetAsync(s => s.Name != null && s.Name.ToLower()
-                    == createDto.Name.ToLower());
+                var existingStudent = await _studentRepo.GetAsync(s => 
+                    s.Name != null && 
+                    s.Name.ToLower() == createDto.Name.ToLower());
 
                 if (existingStudent != null)
                 {
