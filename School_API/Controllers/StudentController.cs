@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using SharedModels;
 
 namespace School_API.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -121,7 +123,6 @@ namespace School_API.Controllers
             {
                 _logger.LogInformation($"Creando un nuevo estudiante con nombre: {createDto.Name}");
 
-                // Validar que el nombre del estudiante no esté vacío
                 if (string.IsNullOrWhiteSpace(createDto.Name))
                 {
                     _logger.LogError("El nombre del estudiante no puede estar vacío.");
