@@ -10,7 +10,7 @@ using SharedModels;
 
 namespace School_API.Controllers
 {
-    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
