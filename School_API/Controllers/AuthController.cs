@@ -4,7 +4,7 @@ using System.Text;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using School_API.Dto;
+using SharedModels.Dto;
 using School_API.Repositories.IRepositories;
 using SharedModels;
 
