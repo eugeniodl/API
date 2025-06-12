@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_API", "School_API\Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School", "School\School.csproj", "{46E2313F-3EF4-8415-74F7-1790EF692F9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolTests", "SchoolTests\SchoolTests.csproj", "{17EFACA1-49C3-4274-962F-6B8A8015BD61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{46E2313F-3EF4-8415-74F7-1790EF692F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46E2313F-3EF4-8415-74F7-1790EF692F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46E2313F-3EF4-8415-74F7-1790EF692F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EFACA1-49C3-4274-962F-6B8A8015BD61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EFACA1-49C3-4274-962F-6B8A8015BD61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EFACA1-49C3-4274-962F-6B8A8015BD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EFACA1-49C3-4274-962F-6B8A8015BD61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
